@@ -152,7 +152,16 @@ class RootCommand(Feature):
         # Show websocket latency in milliseconds
         summary.append(f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms")
 
-        await ctx.send("\n".join(summary))
+        neon = discord.Embed(
+        description="\n".join(summary),
+        color=0x00000)
+        neon.set_footer(text=f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms",
+                             icon_url=self.bot.user.display_avatar.url)
+        neon.set_thumbnail(url=self.bot.user.display_avatar.url)
+        neon.set_author(name=ctx.author,icon_url=ctx.author.avatar.url
+                if ctx.author.avatar else ctx.author.default_avatar.url)
+        await ctx.send(embed=neon)
+        
 
     # pylint: disable=no-member
     @Feature.Command(parent="jsk", name="hide")
