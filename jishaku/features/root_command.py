@@ -154,7 +154,7 @@ class RootCommand(Feature):
 
         neon = discord.Embed(
         description="\n".join(summary),
-        color=0xb177ff)
+        color=0x0075ff)
         neon.set_footer(text=f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms",
                              icon_url=self.bot.user.display_avatar.url)
         neon.set_thumbnail(url=self.bot.user.display_avatar.url)
